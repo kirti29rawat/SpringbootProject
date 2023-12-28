@@ -59,9 +59,18 @@ public class ManagerServiceImpl implements ManagerService {
 		Manager manager = managerReposiory.findById(manid).get();
 		List<Employee> employees = new ArrayList<>();
 		for(Long i : empid)
+		for(Long i : empid)
+		{
+			try
+			
 		{
 			employees.add(employeeRepository.findById(i).get());
+			//Employee e = null;)
 			
+		}
+			catch(NoSuchElementException exe) {
+				return "Employee Id :" + i+" doesn't exist";
+			}
 		}
 		System.out.println(employees);
 		//employees.add(employeeRepository.findById((long) 1).get());
